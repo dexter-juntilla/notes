@@ -1,0 +1,57 @@
+phpdoc --directory=MVC/ \
+--target=docs/MVC/ \
+--title='MVC' \
+--template=abstract
+
+#if there are two docblocks at the top, the top most has a file scope, the next has class scope
+
+
+/**
+  * A summary informing the user what the associated element does.
+  *
+  * A *description*, that can span multiple lines, to go _in-depth_ into the details of this element
+  * and to provide some background information or textual references.
+  *
+  * @param string $myArgument With a *description* of this argument, these may also
+  *    span multiple lines.
+  *
+  * @return void
+  */
+  function myFunction($myArgument)
+  {
+  }
+
+
+/**
+ * Defines core functionality for commands.//title
+ * Command classes perform specific tasks in a system via //description
+ * the execute() method
+ *
+ * @license http://www.example.com/lic.html Borsetshire Open License
+ * @package command
+ * @author Clarrie Grundie
+ * @copyright 2013 Ambridge Technologies Ltd
+ * @see \megaquiz\command\Command::execute() the execute() method
+ * 
+ */
+
+
+
+/**
+ * The application name.
+ * Used by various clients for error messages, etc.
+ * @var string
+ */
+	public $applicationName;
+
+/**
+ * Perform the key operation encapsulated by the class.
+ * Command classes encapsulate a single operation. They
+ * are easy to add to and remove from a project, can be
+ * stored after instantiation and execute() invoked at
+ * leisure.
+ * @param $context CommandContext Shared contextual data
+ * @return bool|int false on failure, int on success
+ * @link http://www.example.com More info	
+ */
+ abstract function execute( CommandContext $context );

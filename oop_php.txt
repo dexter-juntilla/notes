@@ -1,0 +1,54 @@
+Program to an interface, not an implementation.
+Choose composition over inheritance
+Encapsulate the concept that varies//strategy pattern
+
+#The four sign posts
+	Code Duplication
+	The Class Who Knew Too Much
+	The Jack of All Trades
+	Conditional Statements
+
+#concepts
+	Polymorphism is the maintenance of multiple implementations behind a common interface.
+	Encapsulation simply means the hiding of data and functionality from a client.
+	Inheritance is when an object or class is based on another object or class, using the same implementation .
+	aggregation: the contained objects are a core part of the container, but they can also be contained by other objects at the same time.
+	composition: the contained object can be referenced by its container only. It should be deleted when the container is deleted.
+	delegation: the explicit invocation of another object’s method in order to fulfill a request.
+	Decoupling is where we can safely change one part without affecting the other.
+
+#Patterns
+	Strategy pattern is used to move a set of algorithms into a separate type.
+
+#Generating objects // delegate object creation
+	The Singleton pattern: A special class that generates one and only one object instance
+	The Factory Method pattern: Building an inheritance hierarchy of creator classes
+	The Abstract Factory pattern: Grouping the creation of functionally related products
+	The Prototype pattern: Using clone to generate objects
+
+#Patterns for Flexible Object Programming
+	The Composite pattern: Composing structures in which groups of objects can be used as if they were individual objects
+	The Decorator pattern: A flexible mechanism for combining objects at runtime to extend functionality
+	The Facade pattern: Creating a simple interface to complex or variable systems
+
+#Performing and Representing Tasks
+	The Interpreter pattern: Building a minilanguage interpreter that can be used to create scriptable applications
+	The Strategy pattern: Identifying algorithms in a system and encapsulating them into their own types
+	The Observer pattern: Creating hooks for alerting disparate objects about system events
+	The Visitor pattern: Applying an operation to all the nodes in a tree of objects
+	The Command pattern: Creating command objects that can be saved and passed around
+
+#Enterprise patterns
+
+•	 Registry: This pattern is useful for making data available to all classes in a process. Through careful use of serialization, it can also be used to store information across a session or even across instances of an application.
+•	 Front Controller: Use this for larger systems in which you know that you will need as much flexibility as possible in managing many different views and commands.
+•	 Application Controller: Create a class to manage view logic and command selection.
+•	 The front controller pattern is where you have a single entrance point for your web application (e.g. index.php) that handles all of the requests. 
+•	 Template View: Create pages that manage display and user interface only, incorporating dynamic information into display markup with as little raw code as possible.
+•	 Page Controller: Lighter weight but less flexible than Front Controller, Page Controller addresses the same need. Use this pattern to manage requests and handle view logic if you want fast results and your system is unlikely to grow substantially in complexity.
+•	 Transaction Script: When you want to get things done fast, with minimal up-front planning, fall back on procedural library code for your application logic. This pattern does not scale well.
+•	 Domain Model: At the opposite pole from Transaction Script, use this pattern to build object-based models of your business participants and processes.
+
+################
+$lessons[] = new Seminar( 4, new TimedCostStrategy() );
+$lessons[] = new Lecture( 4, new FixedCostStrategy() );

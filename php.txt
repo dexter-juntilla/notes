@@ -1,0 +1,20 @@
+#Downloadable link
+	// send the appropriate headers
+	header('Content-Type: application/octet-stream');
+	header('Content-Length: '. filesize($path));
+	header('Content-Disposition: attachment; filename=' . $getfile);
+	header('Content-Transfer-Encoding: binary');
+	// output the file content
+	readfile($path);	
+
+#empty()
+ The following things are considered to be empty:
+
+    "" (an empty string)
+    0 (0 as an integer)
+    0.0 (0 as a float)
+    "0" (0 as a string)
+    NULL
+    FALSE
+    array() (an empty array)
+    $var; (a variable declared, but without a value)

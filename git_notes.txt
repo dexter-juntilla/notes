@@ -1,0 +1,46 @@
+git config --global user.name "My Name"
+git config --global user.email "my@email.com"
+
+git config --list
+
+git init
+
+git add .
+
+git commit -m "message text"
+
+git log
+
+git log --author="dexter"
+
+git status
+
+git diff
+
+git diff --staged
+
+git rm file.ext
+
+git commit -am "message"
+
+git checkout -- file.txt
+
+git checkout 3ge3g -- file.txt
+
+git reset HEAD file.txt
+
+git remote add somealias https://github.com/dexter-juntilla/sample.git
+
+git push -u somealias master
+
+git pull
+
+git clone https.......
+
+git clone https... foldertoclone
+
+git branch branchname
+
+git checkout branchname
+
+

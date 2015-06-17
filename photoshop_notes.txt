@@ -1,0 +1,8 @@
+tab			   hides panels
+shift+tab	   	   hides panels except tools
+	
+Hold Shift while dragging  proportion
+Hold alt while dragging	   center
+Hold Shift then drag	   add new selection
+
+
