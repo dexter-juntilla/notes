@@ -1,0 +1,11 @@
+	the_post() iterates the posts counter
+
+
+	have_posts() // returns true if there are posts in the database
+		used as a condition in a while loop
+
+	the_title() prints the title if the current post
+
+	the_content() prints the content of the current post
+
+	the_permalink() prints the url of the posts

@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<phpunit bootstrap="vendor/autoload"
+  		 colors="true">
+	<testsuites>
+		<testsuite name="Permissions">
+			<directory>./library/Permissions</directory>
+			<exclude>./library/Permissions/ManagerTest.php</exclude>
+		</testsuite>
+		<testsuite name="Util">
+			<file>./library/Util/PasswordTest.php</file>
+		</testsuite>
+	</testsuites>
+</phpunit>

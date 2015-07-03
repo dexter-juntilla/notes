@@ -1,0 +1,67 @@
+
+//Route::get('/', function(){
+//    Schema::create('users', function($table){
+//        $table->increments('id');
+//        $table->string('username', 32);
+//        $table->string('email', 320);
+//        $table->string('password', 60);
+//        $table->timestamps();
+//    });
+//});
+
+#Column types
+-	increments('id') = adds an auto incremental integer(10) primary key to the table.
+-	bigIncrements('id') = bigint(20)
+-	string('column', 255) = varchar
+-	text('body') = text
+-	integer('num', boolean AI, boolean signed) = integer –2,147,483,648 to 2,147,483,647 ; 0 to 4,294,967,295.
+-	bigInteger –9,223,372,036,854,775,808 to 9,223,372,036,854,775,807 ; 0 to 18,446,744,073,709,551,615
+-	mediumInteger = –8388608 to 8388607 ; 0 to 16777215
+-	tinyInteger = –128 to 127 ; 0 to 255
+-	smallInteger = –32768 to 32767 ; 0 to 65535
+-	float('num', int size, int dec places)
+-	decimal
+-	boolean = tinyInt 0 | 1
+-	enum = $allow = array('Walt', 'Jesse', 'Saul'); $table->enum('who', $allow);
+-	date('when')
+-	dateTime('when')
+-	time('when')
+-	timestamp('when')
+-	binary('file')
+
+#special column types
+-	timestamps() = creates created_at and updated_at columns
+-	softDeletes() = creates deleted_at | logical delete and not physical
+
+
+Schema::create('example', function($table)
+{
+    $table->string('username')->unique();
+    $table->primary('username');
+});
+
+#Column modifiers
+-	type('column')->unique()
+-	primary('column')
+-	type('column')->nullable(true|false)
+-	type('column')->default('value')
+-	type('column')->unsigned(true|false)
+
+#updating tables
+-	Schema::rename('old', 'new')
+-	manipulate tables
+	Schema::table('table', function($table){
+		$table->string('name');//adds a new column to the table
+		$table->dropColumn('field');//drops a column from the table
+		$table->renameColumn('old', 'new');//rename a column
+		$table->dropPrimary('id');//remove primary key attribute
+		$table->dropUnique('id');//remove unique attribute
+	});
+-	Schema::drop('table')
+-	Schema::dropIfExists('table')
+
+#
+-	Schema::connection('database')->create.... //alternative database
+-	Schema::hasTable('table')//boolean
+-	Schema::hasColumn('table', 'column')//boolean
+-	$table->engine = 'InnoDB';

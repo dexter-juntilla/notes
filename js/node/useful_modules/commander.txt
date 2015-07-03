@@ -1,0 +1,13 @@
+commander
+	commander is used to simplify such common CLI tasks as argument parsing and reading user input.
+
+	var commander = require('commander');
+
+	commander.option('-f, --foo <i>','Blah blah', 'parseInt', 0);
+	commander.parse(process.argv);
+
+	console.log(commander.foo)
+
+	if(!isFinite(commander.foo)){
+		commander.help()	
+	}

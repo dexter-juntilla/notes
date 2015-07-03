@@ -1,0 +1,49 @@
+async
+	async.series([func1, func2,...],function(err, res){/*handle result*/});
+
+	async.parallel({
+		one:func(){},
+		two:func(){}
+	},function(err, res){
+		//res...
+	});
+
+	async.parallelLimit({
+		one:func(){},
+		two:func(){},		
+		three:func(){},		
+		four:func(){}		
+	},2,function(error, result){
+		//result...
+	});
+
+	async.waterfall([
+		function(callback){
+			callback(null, Math.random() * 5, Math.random() * 5);
+		},
+		function(a,b,callback){
+			callback(null, a*a + b*b);
+		},
+		function(c,callback){
+			callback(null, Math.sqrt(c));
+		}
+	], function(err, final){
+		console.log(final);
+	});
+
+	var i = 0;
+	async.whilst(function() {
+		return i < 5;
+	}, function(callback) {
+		setTimeout(function() {
+			console.log("i = " + i);
+			i++;
+			callback(null);
+		}, 1000);
+	}, function(error) {
+		console.log("Done!");
+	});
+
+	async.doWhilst(body, test, callback)
+	async.until(test, body, callback)
+	async.doUntil(body, test, callback)

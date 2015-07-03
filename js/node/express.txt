@@ -1,0 +1,166 @@
+var express = require('express');
+var app = express();
+
+//application object
+
+app.set(name, value);
+	//This is used to set environment variables that Express will use in its configuration.
+
+app.get(name):
+	//This is used to get environment variables that Express is using in its configuration.
+
+app.engine(ext, callback);
+	//This is used to define a given template engine to render certain file types, for example, you can tell the EJS template engine to use HTML files as templates like this: app.engine('html', require('ejs').renderFile).
+
+app.locals
+	//This is used to send application-level variables to all rendered templates.
+
+app.use([path], callback);
+	//This is used to create an Express middleware to handle HTTP requests sent to the server. Optionally, you'll be able to mount middleware to respond to certain paths.
+
+app.VERB(path, [callback...], callback);
+	//This is used to define one or more middleware functions to respond to HTTP requests made to a certain path in conjunction with the HTTP verb declared. For instance, when you want to respond to requests that are using the GET verb, then you can just assign the middleware using the app.get() method. For POST requests you'll use app.post() , and so on.
+
+app.route(path).VERB([callback...], callback);
+	//This is used to define one or more middleware functions to respond to HTTP requests made to a certain unified path in conjunction with multiple HTTP verbs. For instance, when you want to respond to requests that are using the GET and POST verbs, you can just assign the appropriate middleware functions using app.route(path).get(callback).post(callback) .
+
+app.param([name], calllback);
+	//This is used to attach a certain functionality to any request made to a path that includes a certain routing parameter. For instance, you can map logic to any request that includes the userId parameter using app.param('userId', callback) .
+
+app.disable('x-powered-by');
+
+//request object
+
+req.query : 
+	This is an object containing the parsed query-string parameters.
+
+req.params : 
+	This is an object containing the parsed routing parameters.
+
+req.body : 
+	This is an object used to retrieve the parsed request body. This property is included in the bodyParser() middleware.
+
+req.param(name) : 
+	This is used to retrieve a value of a request parameter. Note that the parameter can be a query-string parameter, a routing parameter, or a property from a JSON request body.
+
+req.path , req.host , and req.ip : 
+	These are used to retrieve the current request path, host name, and remote IP.
+
+req.cookies : 
+	This is used in conjunction with the cookieParser() middleware to retrieve the cookies sent by the user-agent.
+
+req.query
+	An object containing querystring parameters (sometimes called GET parameters) as name/value pairs.
+
+req.route
+	Information about the currently matched route. Primarily useful for route debugging.
+
+req.cookies / req.signedCookies
+	Objects containing containing cookie values passed from the client. See Chapter 9.
+
+req.headers
+	The request headers received from the client.
+
+req.accepts([types])
+	A convenience method to determine whether the client accepts a given type or types (optional types can be a single MIME type, such as application/json , a comma- delimited list, or an array). This method is of primary interest to those writing public APIs; it is assumed that browsers will always accept HTML by default.
+
+req.ip
+	The IP address of the client.
+
+req.path
+	The request path (without protocol, host, port, or querystring).
+
+req.host
+	A convenience method that returns the hostname reported by the client. This in‐ formation can be spoofed and should not be used for security purposes. req.xhr A convenience property that returns true if the request originated from an AJAX call.
+
+req.protocol
+	The protocol used in making this request (for our purposes, it will either be http or https ).
+
+req.secure
+	A convenience property that returns true if the connection is secure. Equivalent to req.protocol==='https' .
+
+req.url / req.originalUrl
+	A bit of a misnomer, these properties return the path and querystring (they do not include protocol, host, or port). req.url can be rewritten for internal routing purposes, but req.originalUrl is designed to remain the original request and querystring.
+
+req.acceptedLanguages
+	A convenience method that returns an array of the (human) languages the client prefers, in order. This information is parsed from the request header.
+
+//response object
+
+res.status(code) : 
+	This is used to set the response HTTP status code.
+
+res.set(field, [value]) : 
+	This is used to set the response HTTP header.
+
+res.cookie(name, value, [options]) : 
+	This is used to set a response cookie. The options argument is used to pass an object defining common cookie configuration, such as the maxAge property.
+
+res.redirect([status], url) : 
+	This is used to redirect the request to a given URL. Note that you can add an HTTP status code to the response. When not passing a status code, it will be defaulted to 302 Found.
+
+res.send([body|status], [body]) : 
+	This is used for non-streaming responses. This method does a lot of background work, such as setting the Content-Type and Content-Length headers, and responding with the proper cache headers.
+
+res.json([status|body], [body]) : 
+	This is identical to the res.send() method when sending an object or array. Most of the times, it is used as syntactic sugar, but sometimes you may need to use it to force a JSON response to non-objects, such as null or undefined.
+
+res.render(view, [locals], callback) : 
+	This is used to render a view and send an HTML response.
+
+res.status(code)
+	Sets the HTTP status code. Express defaults to 200 (OK), so you will have to use this method to return a status of 404 (Not Found) or 500 (Server Error), or any other status code you wish to use. For redirects (status codes 301, 302, 303, and 307), there is a method redirect , which is preferable.
+
+res.set(name, value)
+	Sets a response header. This is not something you will normally be doing manually.
+
+res.cookie(name, value, [options]) , res.clearCookie(name, [options])
+	Sets or clears cookies that will be stored on the client. This requires some middle‐ ware support; see Chapter 9.
+
+res.redirect([status], url)
+	Redirects the browser. The default redirect code is 302 (Found). In general, you should minimize redirection unless you are permanently moving a page, in which case you should use the code 301 (Moved Permanently).
+
+res.send(body) , res.send(status, body)
+	Sends a response to the client, with an optional status code. Express defaults to a content type of text/html , so if you want to change it to text/plain (for example), you’ll have to call res.set('Content-Type', 'text/plain\') before calling res.send . If body is an object or an array, the response is sent as JSON instead (with the content type being set appropriately), though if you want to send JSON, I rec‐ ommend doing so explicitly by calling res.json instead.
+
+res.json(json) , res.json(status, json)
+	Sends JSON to the client with an optional status code.
+
+res.jsonp(json) , res.jsonp(status, json)
+	Sends JSONP to the client with an optional status code.
+
+res.type(type)
+	A convenience method to set the Content-Type header. Essentially equivalent to res.set('Content-Type', type) , except that it will also attempt to map file ex‐ tensions to an Internet media type if you provide a string without a slash in it. For example, res.type('txt') will result in a Content-Type of text/plain . There are areas where this functionality could be useful (for example, automatically serving disparate multimedia files), but in general, you should avoid it in favor of explicitly setting the correct Internet media type.
+
+res.format(object)
+	This method allows you to send different content depending on the Accept request header. This is of primary use in APIs, and we will discuss this more in Chap‐ ter 15. Here’s a very simple example: res.format({'text/plain': 'hi there', 'text/html': '<b>hi there</b>'}) .
+
+res.attachment([filename]) , res.download(path, [filename], [callback])
+	Both of these methods set a response header called Content-Disposition to at tachment ; this will prompt the browser to download the content instead of dis‐ playing it in a browser. You may specify filename as a hint to the browser. With res.download , you can specify the file to download, whereas res.attachment just sets the header; you still have to send content to the client.
+
+res.sendFile(path, [options], [callback])
+	This method will read a file specified by path and send its contents to the client. There should be little need for this method; it’s easier to use the static middleware, and put files you want available to the client in the public directory. However, if you want to have a different resource served from the same URL depending on some condition, this method could come in handy.
+
+res.links(links)
+	Sets the Links response header. This is a specialized header that has little use in most applications.
+
+res.locals , res.render(view, [locals], callback)
+	res.locals is an object containing default context for rendering views. res.ren der will render a view using the configured templating engine (the locals param‐ eter to res.render shouldn’t be confused with res.locals : it will override the context in res.locals , but context not overridden will still be available). Note that
+
+res.render will default to a response code of 200; use res.status to specify a
+	different response code.
+
+//express middleware
+
+•	 Morgan : This is an HTTP request logger middleware.
+•	 body-parser : This is a body-parsing middleware that is used to parse the
+request body, and it supports various request types.
+•	 method-override : This is a middleware that provides HTTP verb support
+such as PUT or DELETE in places where the client doesn't support it.
+•	 Compression : This is a compression middleware that is used to compress the
+response data using gzip/deflate .
+•	 express.static : This middleware used to serve static files.
+•	 cookie-parser : This is a cookie-parsing middleware that populates the
+req.cookies object.
+•	 Session : This is a session middleware used to support persistent sessions.
+

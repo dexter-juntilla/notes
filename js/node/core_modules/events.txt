@@ -1,0 +1,67 @@
+events
+
+	var events = require('events');
+	var emitter = new events.EventEmitter();
+
+	var x = 'asd', y = 'qwe';
+
+	emitter.on('ev',function(x, y){
+		console.log(x);
+		console.log(y);
+	});
+
+	emitter.emit('ev', x, y);
+
+
+	emitter.on('event', callback);
+		listens for 'event' event
+
+	emitter.once('event', callback);
+		listens for 'event' event only once
+
+	emitter.listeners('event');
+		returns  an array of 'event' listenes
+
+	EventEmitter.listernerCount(emitter, 'event');
+		returns the number of 'event' listeners of emitter
+
+	emitter.on('newListener',function(eventName, listener){	});
+		called when you attach a new event listener
+
+	emitter.removeListener("foo", handler);
+		removes emitter.on("foo", handler);
+
+	emitter.setMaxListeners(n)
+		node prints a warning if emitter has more than n number of listeners. 
+		unlimited if n is 0
+		default n is 10
+
+
+####################################
+###Inheriting from Event Emitters###
+####################################
+var util = require('util');
+
+var emitter = require('events').EventEmitter;
+
+function UserEventEmitter(){
+	emitter.call(this);
+
+	this.adduser = function(user){
+
+		var userx = user;
+
+		this.emit('addedUser', userx);
+	};
+}
+
+util.inherits(UserEventEmitter, emitter);
+
+
+var user = new UserEventEmitter();
+
+user.on('addedUser',function(userx){
+	console.log('added '+userx);
+});
+
+user.adduser('dexter');

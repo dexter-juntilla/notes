@@ -1,0 +1,21 @@
+path
+	The path module exports functions that provide useful string transformations common when working with the file system.
+
+	path.normalize(str)
+		This function fixes up slashes to be OS specific, takes care of . and .. in the path, and also removes duplicate slashes.
+
+	path.join([str1], [str2], ...)
+		This function joins any number of paths together, taking into account the operating system.
+
+	path.dirname, basename, and extname
+		These functions are three of the most useful functions in the path module. path.dirname gives you the directory portion of a specific path string (OS independent), and path.basename gives you the name of the file. path.extname gives you the file extension.
+
+	path.sep
+		path separator used by the os
+
+	path.delimiter
+		PATH environment variable separator ie. ':' or ';'
+
+	path.relative(from, to); determine the relative path from one directory to another
+
+	

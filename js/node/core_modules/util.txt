@@ -1,0 +1,14 @@
+util
+	The util module contains a number of useful functions that are general purpose.
+
+	util.log('text'); //  21 Jun 19:56:59 - text
+
+	util.format("I have PHP%d",5); // 'I have PHP5'
+
+	util.isArray([]); // true
+
+	util.isDate(new Date()); // true
+
+	util.isError(new Error('Some error')); // true
+
+	util.inherits(class, superclass);

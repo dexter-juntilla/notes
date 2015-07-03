@@ -1,0 +1,7 @@
+composer psr-4 autoloading
+
+bower
+
+grunt/gulp
+
+mockery

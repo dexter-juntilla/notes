@@ -1,0 +1,16 @@
+get_header()
+	includes the contents of header.php
+
+get_footer()
+	includes the contents of footer.php
+
+wp_head()
+	This allows plugins to activate and write information in your WordPress theme's header files
+
+wp_footer()
+	This allows plugins to activate and write information in your WordPress theme's footer files
+
+language_attributes()
+	prints -> lang="en-US"
+
+body_class()

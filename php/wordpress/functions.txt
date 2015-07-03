@@ -1,0 +1,2 @@
+get_stylesheet_uri()
+	returns the uri of style.css

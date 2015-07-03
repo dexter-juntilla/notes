@@ -1,0 +1,52 @@
+fs
+	The fs module provides access to the filesystem. Use require('fs') to load this module. The fs module has functions for renaming files, deleting files, reading files, and writing to files. A simple example to write to the file system and read from the file system is shown in Listing 3-37.
+
+	fs.writeFile('file.txt','text');
+
+	fs.readFile('file.txt', 'utf-8', function(err, data){
+		if(err)
+			console.log('Error:' + err);
+		console.log(data);
+	});
+
+	fs.createReadStream('index.html').pipe(response);
+
+	fs.exists('file', function(exists){ });
+
+	fs.stat('file', function(error, stats){  });
+		dev 	ID of the device containing the file.
+		mode 	The file's protection.
+		nlink 	The number of hard links to the file.
+		uid 	User ID of the file’s owner.
+		gid 	Group ID of the file’s owner.
+		rdev 	The device ID, if the file is a special file.
+		blksize The block size for file system I/O.
+		ino 	The file’s inode number. An inode is a file system data structure that stores information about a file.
+		size 	The file’s total size in bytes.
+		blocks 	The number of blocks allocated for the file.
+		atime 	Date object representing the file’s last access time.
+		mtime 	Date object representing the file’s last modification time.
+		ctime 	Date object representing the last time the file’s inode was changed.
+
+		isFile() 			Indicates whether a file is a normal file.
+		isDirectory() 		Indicates whether a file is a directory.
+		isBlockDevice() 	Indicates whether a file is a block device file. This includes devices like hard disks,CD-ROMs, and flash drives.
+		isCharacterDevice() Indicates whether a file is a character device file. This includes devices like keyboards.
+		isSymbolicLink() 	Indicates whether a file is a symbolic link. This is valid only when using lstat() andlstatSync().
+		isFIFO() 			Indicates whether a file is a FIFO special file.
+		isSocket() 			Indicates whether a file is a socket.
+
+	fs.open
+
+		r 		Open for reading. An exception occurs if the file does not exist.
+		r+ 		Open for reading and writing. An exception occurs if the file does not exist.
+		rs 		Open for reading in synchronous mode. This instructs the operating system to bypass the system cache.This is mostly used for opening files on NFS mounts. This does not make open() a synchronous method.
+		rs+ 	Open for reading and writing in synchronous mode.
+		w 		Open for writing. If the file does not exist, it is created. If the file already exists, it is truncated.
+		wx 		Similar to the w flag, but the file is opened in exclusive mode. Exclusive mode ensures that the file isnewly created.
+		w+ 		Open for reading and writing. If the file does not exist, it is created. If the file already exists, it is truncated.
+		wx+ 	Similar to the w+ flag, but the file is opened in exclusive mode.
+		a 		Open for appending. If the file does not exist, it is created.
+		ax 		Similar to the a flag, but the file is opened in exclusive mode.
+		a+ 		Open for reading and appending. If the file does not exist, it is created.
+		ax+ 	Similar to the a+ flag, but the file is opened in exclusive mode.

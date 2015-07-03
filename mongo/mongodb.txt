@@ -1,0 +1,50 @@
+#RUN MONGODB 
+cd /usr/bin/
+mongod
+
+#RUN MONGODB CLI
+cd /usr/bin/
+mongo
+
+#################
+
+show dbs
+
+show collections
+
+db.collectionName.insert({"key":"value"})
+
+db.collectionName.find()
+
+db.collectionName.find({"key":"value"})
+
+db.collectionName.drop()
+
+db.collectionName.update({
+	"user":"bob"
+},{
+	"title":"blah blah",
+	"user":"bob"
+},{
+	upsert:true
+})
+
+db.posts.save({"title":"Second Post", "user": "alice"})
+
+db.posts.find({"user":{$in:["alice", "bob"]}})
+
+db.posts.find({"user":"alice", "commentsCount":{ $gt:10 })
+
+db.posts.find({$or:[{"user":"alice"},{"user":"bob"}]})
+
+db.posts.update({
+	"user":"alice"
+},{
+	"title":"First Post"
+},{
+	multi:true
+})
+
+db.posts.remove({ "user": "alice" }) //remove multiple
+
+db.posts.remove({ "user": "alice" }, true) // remove single

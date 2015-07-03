@@ -1,0 +1,30 @@
+global object
+
+//file 1
+function functionName(){......}
+
+module.exports.identifier = functionName;
+
+//file 2
+var someModule = require('./file');
+
+someModule.identifier();
+
+//
+modules.exports = {
+
+   saasd: function(){
+      return "asas";
+   },
+
+   daed: function(){
+      return "sfsf";
+   }
+};
+
+//package.json inside module folder
+{
+	"name" : "module",
+	"version" : "1.0.0",
+	"main" : "./something.js"
+}

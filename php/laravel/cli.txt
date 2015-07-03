@@ -1,0 +1,22 @@
+sudo composer create-project laravel/laravel project 4.2 --prefer-dist
+
+php artisan serve
+
+sudo composer dump-autoload
+
+php artisan migrate:make create_users
+php artisan migrate:make create_users --database=mysql
+php artisan migrate:make create_users --create --table=users
+
+php artisan migrate:install
+
+php artisan migrate //execute migrations
+
+php artisan migrate --pretend//execute migrations without altering the database
+
+php artisan migrate:refresh //reexecute migrations
+
+php artisan migrate:rollback //rollback last migration
+
+php artisan migrate:reset //rollback all migrations
+

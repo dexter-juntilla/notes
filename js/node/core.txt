@@ -1,0 +1,23 @@
+Timers and Scheduling
+
+	var x = setInterval(callback, delay, args...)
+
+	clearInterval(x)
+
+	var y = setTimeout(callback, delay, args...)
+
+	clearTimeout(y)
+
+	x.unref();stop the timer if it is the only item remaining in the event loop
+
+	x.ref();resumes the timer
+
+	var immediateId = setImmediate(function() {
+		console.log("In immediate function");
+	});
+	 
+	clearImmediate(immediateId);
+
+	process.nextTick(callback); execute callback in the next iteration of the event loop
+
+	decodeURI(url)

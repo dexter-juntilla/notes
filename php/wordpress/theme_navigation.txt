@@ -1,0 +1,27 @@
+/*header.php*/
+	
+	<nav class="site-nav">
+		<?php
+			wp_nav_menu( array(
+				'theme_location' => 'primary'
+			) );
+		?>
+	</nav>
+
+/*functions.php*/
+	
+	register_nav_menus( array(
+		'primary' => __( 'Primary Menu' ),
+		'footer' => __( 'Footer Menu' )
+	) );
+
+/*admin dashboard*/
+	Appearance
+		Menus
+			click Create Menu
+			select from pages widget
+			click save menu
+		Manage Locations tab
+			choose assigned menu
+
+/*style.css*/
