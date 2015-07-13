@@ -1,0 +1,13 @@
+sudo npm install -g grunt-cli   //CLI for grunt
+npm install grunt --save-dev    
+npm install grunt-contrib-pluginName --save-dev //pluginName being the actual name of the plugin
+touch GruntFile.js
+grunt
+
+plugins
+
+-uglify
+	js minification
+
+-cssmin
+	css minification

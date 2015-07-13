@@ -1,3 +1,5 @@
+"mongodb://admin:@localhost/dbname"
+
 #RUN MONGODB 
 cd /usr/bin/
 mongod
@@ -8,17 +10,41 @@ mongo
 
 #################
 
+use dbname
+	//connect to db OR create then connect to db
+
 show dbs
+	//display all dbs
 
 show collections
+	//display all collections
+
+db
+	//display current db 
+
+db.dropDatabase()
+	//drop current db
 
 db.collectionName.insert({"key":"value"})
+	//insert
 
 db.collectionName.find()
+	//display all
+
+db.collectionName.find().pretty()
+	//display formatted
+
+db.collectionName.findOne()
+	//display 1 object
 
 db.collectionName.find({"key":"value"})
+	//display all where key = value
+
+db.collectionName.remove({"key":"value"})
+	//delete objet where key = value
 
 db.collectionName.drop()
+	// drop entire collection
 
 db.collectionName.update({
 	"user":"bob"
@@ -32,10 +58,24 @@ db.collectionName.update({
 db.posts.save({"title":"Second Post", "user": "alice"})
 
 db.posts.find({"user":{$in:["alice", "bob"]}})
+	SELECT FROM posts WHERE user in ('alice', 'bob')
+
+db.users.find(
+	{"user":"bob"},
+	{"name":1, "_id":0}
+) SELECT name FROM users WHERE user = 'bob'
+
+db.users.find({"color":"red"}).limit(1)
+	//SELECT * FROM users WHERE color = 'red' LIMIT 1
+
+db.users.find({"color":"red"}).skip(2).limit(1)
+
 
 db.posts.find({"user":"alice", "commentsCount":{ $gt:10 })
+	//SELECT * FROM posts WHERE user = 'alice' AND commentsCount > 10
 
 db.posts.find({$or:[{"user":"alice"},{"user":"bob"}]})
+	//SELECT * FROM posts WHERE user = 'alice' OR user = 'bob'
 
 db.posts.update({
 	"user":"alice"
@@ -48,3 +88,9 @@ db.posts.update({
 db.posts.remove({ "user": "alice" }) //remove multiple
 
 db.posts.remove({ "user": "alice" }, true) // remove single
+
+db.posts.ensureIndex({"user":1}) //indexing user property for faster querying
+
+db.posts.dropIndex({"user":1}) //
+
+db.posts.getIndexes() 

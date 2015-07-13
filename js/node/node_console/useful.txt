@@ -1,0 +1,2 @@
+'\033c'
+	clears the terminal

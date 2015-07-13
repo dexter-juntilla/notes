@@ -1,0 +1,5 @@
+Route::get('/', 'PageController@index');
+
+get('/', 'PageController@index');
+
+Route::get('songs/{id}', 'SongController@show');

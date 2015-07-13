@@ -1,0 +1,31 @@
+var Stream = require('stream');
+var stream = new Stream();
+
+stream.readable = true; // makes the stream readable
+
+stream.writable = true; // makes the stream writable
+
+
+###################
+### DATA EVENTS ###
+###################
+
+data
+	stream.emit("data", new Buffer("foo"));
+
+	You use a data event to indicate that a new piece of stream data, referred to as a chunk, is available.
+
+end
+	stream.emit("end");
+
+	Once a stream sends all of its data, it should emit a single end event. Once the end event is emitted, no further data events should be emitted.
+
+close
+	stream.emit("close"); 
+
+	The close event is used to indicate that the underlying source of the stream data has been closed. For example, streams that read data from a file emit a close event when the file descriptor is closed.
+
+error
+	stream.emit("error", new Error("Something went wrong!")); 
+
+	error events are used to indicate that a problem occurred with the data stream. For example, streams that read from files emit an error event if the backing file does not exist.

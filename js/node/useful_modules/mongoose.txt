@@ -1,0 +1,15 @@
+var mongoose = require('mongoose');
+var connection = mongoose.createConnection('mongodb://admin:@localhost/test');
+var PersonSchema = mongoose.Schema({
+  Name: String
+});
+var Person = connection.model("Person", PersonSchema);
+
+connection.on('open', function(err){
+  var person = new Person({
+    Name:"Dexter"
+  });
+
+  person.save(function(err){});
+});
+

@@ -1,0 +1,125 @@
+Various HTTP Request Methods
+
+GET 		Retrieves a representation of the specified resource. A GET request should not alter the state of the server, and is essentially a read operation.
+
+HEAD 		Retrieves the same data as an equivalent GET request, except the response body should be omitted. This is useful for quickly retrieving a resource’s response headers without incurring the overhead of transferring the entire body. An example use case for a HEAD request is simply checking if a resource exists without downloading its entire contents.
+
+POST 		Used to create new resources on the server. Typical uses of POST requests are the submission of HTML forms and the addition of data to a database.
+
+PUT 		PUT requests are similar to POST requests; however, PUTs are used to update existing resources on the server. If the resource does not exist, the server can create it.
+
+DELETE 		Used to delete a resource from a server.
+
+TRACE 		Echoed back to the client. This is useful for detecting any changes made by intermediary servers.
+
+OPTIONS 	Returns a list of the verbs supported for the given URL.
+
+CONNECT 	Used to create a tunnel through a proxy server. The proxy will make the connection on the client’s behalf. After the connection is established, the proxy simply forwards the TCP traffic between the client and remote server. This technique allows encrypted HTTPS traffic to be proxied through an unencrypted HTTP channel.
+PATCH 		The PATCH method is similar to PUT. However, PATCH is used to make partial updates to an existing resource. This is different from PUT, which should resubmit the entire resource during an update.
+
+--------------------------------------------------------------------------
+Several Common HTTP Request Headers
+
+Accept Specifies the Content-Types that the client is willing to accept for this request.
+
+Accept-Encoding Provides a list of acceptable encodings. Many servers can compress data to speed up network transmission times. This header tells the server which compression types (gzip, deflate, and so on) the client can handle.
+
+Cookie Small pieces of data that the server stores on the client. The Cookie header contains all of the cookies that the client is currently storing for the server.
+
+Content-Length The length of the request body in octets.
+
+Host The domain and port of the server. This header is mandatory in HTTP 1.1. This header is useful when multiple servers are hosted on the same machine.
+
+User-Agent A string identifying the type of client. This normally contains information such as the browser name and version and operating system.
+
+---------------------------------------------------------------------------------
+Several Common (and One Comical) HTTP Response Codes and Reason Phrases
+
+200 	OK Indicates that the HTTP request was handled successfully.
+
+201 	Created Indicates that the request has been fulfilled, and a new resource has been created on the server.
+
+301 	Moved Permanently The requested resource has permanently moved to a new URL. The Location response header should contain the new URL to redirect to.
+
+303 	See Other The requested resource can be found via a GET request to the URL specified in the Location response header.
+
+304 	Not Modified Indicates that a cached resource has not been modified. To improve performance, a 304 response should not contain a body.
+
+400 	Bad Request Indicates that the request was malformed and could not be understood. An example of this is a request that is missing a required parameter.
+
+401 	Unauthorized If a resource requires authentication, and the provided credentials are refused, then the server will respond with this status code.
+
+404 	Not Found The server could not locate the requested URL.
+
+418 	I'm a Teapot This status code was introduced as an April Fools’ Day joke. Actual servers should not return this status code.
+
+500 	Internal Server Error The server encountered an error while attempting to fulfill the request.
+
+console.log(util.inspect(http.STATUS_CODES));
+
+-------------------------------------------------------------------------------------
+Several Common HTTP Response Headers
+
+Cache-Control Specifies whether a resource can be cached. If it can, this header designates the length of time, in seconds, that it can be stored in any cache.
+
+Content-Encoding Specifies the encoding used on the data. This allows the server to compress responses for faster transmission over the network.
+
+Content-Length The length of the response body in bytes.
+
+Content-Type Specifies the MIME type of the response body. Essentially, this header tells the client how to interpret the data.
+
+Location When the client is redirected, the target URL is stored in this header.
+
+Set-Cookie Creates a new cookie on the client. This cookie will be included in the Cookie header of future requests.
+
+Vary Used to dictate which request headers affect caching. For example, if a given resource has more than one representation, and the Accept request header is used to differentiate between them, then Accept should be included in the Vary header.
+
+WWW-Authenticate If an authentication scheme is implemented for a given resource, this header is used to identify the scheme. An example value is Basic, corresponding to HTTP Basic authentication.
+
+response.setHeader('Content-Type', 'text/html');
+
+response.writeHead(200, {'Content-Type': 'text/html'});
+
+-----------------------------------------------------------
+Description of Various Cookie Attributes
+
+Domain Limits the scope of the cookie, such that it is sent to the server only on requests of the given domain. If omitted, this defaults to the domain of the resource that set the cookie.
+
+Path Limits the scope of the cookie to all resources contained in the provided path. If omitted, Path defaults to /, applying to all resources.
+
+Expires Includes the date when the cookie should be deleted and is no longer valid.
+
+Max-Age Also specifies when the cookie should expire. However, Max-Age is specified as the number of seconds that the cookie should persist from the time it is set.
+
+Secure Cookies marked with the Secure flag are used only over secure connections. Browsers should send these cookies only over a secure (HTTPS) connection, while servers should set them only when the client makes a secure connection.
+
+HttpOnly Cookies marked with HttpOnly can be accessed only by HTTP and HTTPS. These cookies cannot
+be accessed via JavaScript in the browser, helping to mitigate cross-site scripting attacks.
+
+response.setHeader("Set-Cookie",
+["name=Colin; Expires=Sat, 10 Jan 2015 20:00:00 GMT;\
+Domain=foo.com; HttpOnly; Secure",
+"foo=bar; Max-Age=3600"]);
+
+------------------------------------------------------------------
+
+
+response.headersSent; boolean
+
+request.headers;
+	{ host: '127.0.0.1:8000',
+	  connection: 'keep-alive',
+	  accept: 'text/html,application/xhtml+xml,application/xml;q=0.9,image/webp,*/*;q=0.8',
+	  'user-agent': 'Mozilla/5.0 (X11; Linux i686) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/43.0.2357.132 Safari/537.36',
+	  'accept-encoding': 'gzip, deflate, sdch',
+	  'accept-language': 'en-US,en;q=0.8' }
+
+http.request({
+	hostname: "localhost",
+	port: 8000,
+	path: "/",
+	method: "POST",
+	headers: {
+		"Host": "localhost:8000"
+	}
+});

@@ -1,0 +1,53 @@
+req.query : 
+	This is an object containing the parsed query-string parameters.
+
+req.params : 
+	This is an object containing the parsed routing parameters.
+
+req.body : 
+	This is an object used to retrieve the parsed request body. This property is included in the bodyParser() middleware.
+
+req.param(name) : 
+	This is used to retrieve a value of a request parameter. Note that the parameter can be a query-string parameter, a routing parameter, or a property from a JSON request body.
+
+req.path , req.host , and req.ip : 
+	These are used to retrieve the current request path, host name, and remote IP.
+
+req.cookies : 
+	This is used in conjunction with the cookieParser() middleware to retrieve the cookies sent by the user-agent.
+
+req.query
+	An object containing querystring parameters (sometimes called GET parameters) as name/value pairs.
+
+req.route
+	Information about the currently matched route. Primarily useful for route debugging.
+
+req.cookies / req.signedCookies
+	Objects containing containing cookie values passed from the client. See Chapter 9.
+
+req.headers
+	The request headers received from the client.
+
+req.accepts([types])
+	A convenience method to determine whether the client accepts a given type or types (optional types can be a single MIME type, such as application/json , a comma- delimited list, or an array). This method is of primary interest to those writing public APIs; it is assumed that browsers will always accept HTML by default.
+
+req.ip
+	The IP address of the client.
+
+req.path
+	The request path (without protocol, host, port, or querystring).
+
+req.host
+	A convenience method that returns the hostname reported by the client. This in‐ formation can be spoofed and should not be used for security purposes. req.xhr A convenience property that returns true if the request originated from an AJAX call.
+
+req.protocol
+	The protocol used in making this request (for our purposes, it will either be http or https ).
+
+req.secure
+	A convenience property that returns true if the connection is secure. Equivalent to req.protocol==='https' .
+
+req.url / req.originalUrl
+	A bit of a misnomer, these properties return the path and querystring (they do not include protocol, host, or port). req.url can be rewritten for internal routing purposes, but req.originalUrl is designed to remain the original request and querystring.
+
+req.acceptedLanguages
+	A convenience method that returns an array of the (human) languages the client prefers, in order. This information is parsed from the request header.

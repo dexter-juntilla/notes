@@ -1,0 +1,20 @@
+use Illuminate\Database\Model as Eloquent;
+
+
+class Song extends Eloquent {
+	
+}
+
+
+use App\Song;
+$song = new Song();
+$song-> $title = 'Blah';
+$song->save();
+
+$song->toArray();
+
+$song->toJson();
+
+Song::all();
+
+Song::whereTitle($title);

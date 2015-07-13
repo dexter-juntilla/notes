@@ -1,0 +1,17 @@
+process.argv = returns CL args
+	nodejs app.js args
+
+proess.nextTick(
+	function(){
+		console.log("nextTick"); // comes after the next iteration of the event loop
+	}
+); console.log("immediate");
+
+process.cwd(); returns the current working directory as string
+
+process.chdir('../'); change the current working directory
+
+process.execPath; returns the node executable path as string
+
+process.env.PATH; returns the PATH environment variable  as string
+

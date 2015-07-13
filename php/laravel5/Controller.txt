@@ -1,0 +1,9 @@
+return view('pages.index');
+
+$arr = [1,2,3,4];
+return view('pages.index', ['data'=>$arr]);
+
+return view('pages.index')->with('data', $arr);
+
+Route::get('songs/{id}', 'SongController@show');
+	public function show($id){  }

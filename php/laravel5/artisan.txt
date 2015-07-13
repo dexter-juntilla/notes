@@ -1,0 +1,17 @@
+php artisan help list --raw
+
+php artisan serve
+
+php artisan tinker
+
+php artisan help make:controller
+
+php artisan make:controller --plain PagesController
+
+php artisan make:migration create_songs_table --create="songs"
+
+php artisan migrate
+
+php artisan migrate:rollback
+
+php artisan migrate:reset

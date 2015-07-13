@@ -1,7 +1,7 @@
 fs
 	The fs module provides access to the filesystem. Use require('fs') to load this module. The fs module has functions for renaming files, deleting files, reading files, and writing to files. A simple example to write to the file system and read from the file system is shown in Listing 3-37.
 
-	fs.writeFile('file.txt','text');
+	fs.writeFile('file.txt','text', function(err){});
 
 	fs.readFile('file.txt', 'utf-8', function(err, data){
 		if(err)
@@ -9,9 +9,21 @@ fs
 		console.log(data);
 	});
 
-	fs.createReadStream('index.html').pipe(response);
+	var write = fs.createWriteStream('bar.txt');
+
+	fs.createReadStream('foo.txt').on('open', function(fd){
+		this.pipe(write);
+	});
 
 	fs.exists('file', function(exists){ });
+
+	fs.rename(old, new, function(err){});
+
+	fs.unlink(path, function(err){})
+
+	fs.mkdir(path, function(err){})
+
+	fs.rmdir(path, function(err){}) //deletes non-empty directory
 
 	fs.stat('file', function(error, stats){  });
 		dev 	ID of the device containing the file.

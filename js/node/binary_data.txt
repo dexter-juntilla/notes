@@ -1,0 +1,75 @@
+var buf = new ArrayBuffer(8);
+var view = new Uint32Array(buf);
+
+    Int8Array           1 Array of 8-bit signed integers.
+    Uint8Array          1 Array of 8-bit unsigned integers.
+    Uint8ClampedArray   1 Array of 8-bit unsigned integers. Values are clamped to be in the 0–255 range.
+    Int16Array          2 Array of 16-bit signed integers.
+    Uint16Array         2 Array of 16-bit unsigned integers.
+    Int32Array          4 Array of 32-bit signed integers.
+    Uint32Array         4 Array of 32-bit unsigned integers.
+    Float32Array        4 Array of 32-bit IEEE floating point numbers.
+    Float64Array        8 Array of 64-bit IEEE floating-point numbers.
+
+var buf = new Buffer();
+
+buf.toString();
+
+buf.toJSON();
+
+JSON.stringify(buf);
+
+Buffer.isEncoding('utf-8');
+
+Buffer.isBuffer(buf);
+
+Buffer.bytelength('foo');
+
+var length = (new Buffer("foo")).length;
+
+var buffer = new Buffer(1024);
+
+buffer.fill(data, [start = 0], [end]);
+
+buffer.write(data, [start = 0], [bytes = all], [encoding = utf-8]);
+
+    buf.writeDoubleLE(3.14, offset = 0, [validation = false]);
+
+    writeUInt8()    Writes an unsigned 8-bit integer.
+    writeInt8()     Writes a signed 8-bit integer.
+    writeUInt16LE() Writes an unsigned 16-bit integer using little-endian format.
+    writeUInt16BE() Writes an unsigned 16-bit integer using big-endian format.
+    writeInt16LE()  Writes a signed 16-bit integer using little-endian format.
+    writeInt16BE()  Writes a signed 16-bit integer using big-endian format.
+    writeUInt32LE() Writes an unsigned 32-bit integer using little-endian format.
+    writeUInt32BE() Writes an unsigned 32-bit integer using big-endian format.
+    writeInt32LE()  Writes a signed 32-bit integer using little-endian format.
+    writeInt32BE()  Writes a signed 32-bit integer using big-endian format.
+    writeFloatLE()  Writes a 32-bit floating-point number using little-endian format.
+    writeFloatBE()  Writes a 32-bit floating-point number using big-endian format.
+    writeDoubleLE() Writes a 64-bit floating-point number using little-endian format.
+    writeDoubleBE() Writes a 64-bit floating-point number using big-endian format.
+
+    value = buf.readDoubleLE(offset = 0, [validation = false]);
+    readUInt8()     Reads an unsigned 8-bit integer.
+    readInt8()      Reads a signed 8-bit integer.
+    readUInt16LE()  Reads an unsigned 16-bit integer using little-endian format.
+    readUInt16BE()  Reads an unsigned 16-bit integer using big-endian format.
+    readInt16LE()   Reads a signed 16-bit integer using little-endian format.
+    readInt16BE()   Reads a signed 16-bit integer using big-endian format.
+    readUInt32LE()  Reads an unsigned 32-bit integer using little-endian format.
+    readUInt32BE()  Reads an unsigned 32-bit integer using big-endian format.
+    readInt32LE()   Reads a signed 32-bit integer using little-endian format.
+    readInt32BE()   Reads a signed 32-bit integer using big-endian format.
+    readFloatLE()   Reads a 32-bit floating-point number using little-endian format.
+    readFloatBE()   Reads a 32-bit floating-point number using big-endian format.
+    readDoubleLE()  Reads a 64-bit floating-point number using little-endian format.
+    readDoubleBE()  Reads a 64-bit floating-point number using big-endian format.
+
+buffer.slice(start, [end = all]);
+
+buf1.copy(buf2, [start_dest = 0], [start_source = 0], [end = buf1.length]);
+
+var buf = Buffer.concat([buf1, buf2]);
+
+

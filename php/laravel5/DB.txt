@@ -1,0 +1,12 @@
+App\Http\Controllers\DB
+
+DB::table('songs')->insert([
+	'title'=>'blah', 
+	'created_at'=>new DateTime, 
+	'updated_at'=>new DateTime
+]);
+
+DB::table('songs')->get();
+
+DB::table('songs')->find(1);
+

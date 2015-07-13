@@ -1,0 +1,18 @@
+var net = require('net');
+
+var server = net.createServer({
+	alloHalfOpen: false
+},function(socket){
+	//handle connection
+});
+
+server.listen(8080, '127.0.0.1', [backlog], [callback]);
+
+server.address();
+	{ address: '0.0.0.0', family: 'IPv4', port: 59493 }
+
+server.on("error", function(error) {
+	if (error.code === "EADDRINUSE") {
+		console.error("Port is already in use");
+	}
+});

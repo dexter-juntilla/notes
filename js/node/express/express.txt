@@ -1,0 +1,44 @@
+var express = require('express');
+var app = express();
+
+//application object
+
+app.set(name, value);
+	//This is used to set environment variables that Express will use in its configuration.
+
+app.get(name):
+	//This is used to get environment variables that Express is using in its configuration.
+
+app.engine(ext, callback);
+	//This is used to define a given template engine to render certain file types, for example, you can tell the EJS template engine to use HTML files as templates like this: app.engine('html', require('ejs').renderFile).
+
+app.locals
+	//This is used to send application-level variables to all rendered templates.
+
+app.use([path], callback);
+	//This is used to create an Express middleware to handle HTTP requests sent to the server. Optionally, you'll be able to mount middleware to respond to certain paths.
+
+app.VERB(path, [callback...], callback);
+	//This is used to define one or more middleware functions to respond to HTTP requests made to a certain path in conjunction with the HTTP verb declared. For instance, when you want to respond to requests that are using the GET verb, then you can just assign the middleware using the app.get() method. For POST requests you'll use app.post() , and so on.
+
+app.route(path).VERB([callback...], callback);
+	//This is used to define one or more middleware functions to respond to HTTP requests made to a certain unified path in conjunction with multiple HTTP verbs. For instance, when you want to respond to requests that are using the GET and POST verbs, you can just assign the appropriate middleware functions using app.route(path).get(callback).post(callback) .
+
+app.param([name], calllback);
+	//This is used to attach a certain functionality to any request made to a path that includes a certain routing parameter. For instance, you can map logic to any request that includes the userId parameter using app.param('userId', callback) .
+
+app.disable('x-powered-by');
+
+
+•	 Morgan : This is an HTTP request logger middleware.
+•	 body-parser : This is a body-parsing middleware that is used to parse the
+request body, and it supports various request types.
+•	 method-override : This is a middleware that provides HTTP verb support
+such as PUT or DELETE in places where the client doesn't support it.
+•	 Compression : This is a compression middleware that is used to compress the
+response data using gzip/deflate .
+•	 express.static : This middleware used to serve static files.
+•	 cookie-parser : This is a cookie-parsing middleware that populates the
+req.cookies object.
+•	 Session : This is a session middleware used to support persistent sessions.
+

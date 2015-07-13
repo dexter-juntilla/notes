@@ -1,0 +1,51 @@
+Configuration Options Supported by exec()
+
+- cwd 		The value used to set the child process’s working directory.
+
+- env 		env should be an object whose key-value pairs specify the child process’s environment. This object is equivalent to process.env in the child. If not specified, the child process inherits its environment from the parent process.
+
+- encoding 	The character encoding used by the child process’s stdout and stderr streams. It defaults to utf8
+(UTF-8)
+
+- timeout 	The property used to terminate the child process after a certain amount of time. If this value is greater than 0, the process is killed after timeout milliseconds. Otherwise the process runsindefinitely. The property defaults to 0.
+
+- maxBuffer 	The maximum amount of data that can be buffered in the child process’s stdout or stderr stream. It defaults to 200 KB. If this value is exceeded by either stream, the child process is killed.
+
+- killSignal 	The signal used to terminate the child process. It is sent to the child process if, for example, a time-out occurs or if the maximum buffer size is exceeded. It defaults to SIGTERM.
+
+A Listing of the Options Supported by spawn()
+
+- cwd 		The value used to set the child process’s working directory.
+
+- env 		env should be an object whose key-value pairs specify the child process’s environment. This object is equivalent to process.env in the child. If not specified, the child process inherits its environment from the parent process.
+
+- stdio 		Either an array or a string used to configure the child process’s standard streams. This argument is covered below.
+		
+- detached 	A Boolean specifying if the child process will be a process group leader. If true, the child can
+continue executing even if the parent terminates. This defaults to false.
+
+- uid 		This number, representing the user identity to run the process as, allows programs to be run as another user and to temporarily elevate privileges. It defaults to null, causing the child to be run as the current user.
+
+- gid 		A number used to set the process’s group identity. It defaults to null, with the value to be set based on the current user.
+
+var cp = require("child_process");
+ 
+cp.exec("ls -l /", function(error, stdout, stderr) {
+	if (error) {
+		console.error(error.toString());
+	} else if (stderr !== "") {
+		console.error(stderr);
+	} else {
+		console.log(stdout);
+	}
+});
+
+cp.execFile("ls", ["-l", "/"], function(error, stdout, stderr) {
+	if (error) {
+		console.error(error.toString());
+	} else if (stderr !== "") {
+		console.error(stderr);
+	} else {
+		console.log(stdout);
+	}
+});

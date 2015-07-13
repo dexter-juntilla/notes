@@ -1,0 +1,64 @@
+//response object
+
+res.status(code) : //res.status(200);
+	This is used to set the response HTTP status code.
+
+res.set(field, [value]) : //res.set('Content-type', 'text/html');
+	This is used to set the response HTTP header.
+
+res.cookie(name, value, [options]) : 
+	This is used to set a response cookie. The options argument is used to pass an object defining common cookie configuration, such as the maxAge property.
+
+res.redirect([status], url) : 
+	This is used to redirect the request to a given URL. Note that you can add an HTTP status code to the response. When not passing a status code, it will be defaulted to 302 Found.
+
+res.send([body|status], [body]) : 
+	This is used for non-streaming responses. This method does a lot of background work, such as setting the Content-Type and Content-Length headers, and responding with the proper cache headers.
+
+res.json([status|body], [body]) : 
+	This is identical to the res.send() method when sending an object or array. Most of the times, it is used as syntactic sugar, but sometimes you may need to use it to force a JSON response to non-objects, such as null or undefined.
+
+res.render(view, [locals], callback) : 
+	This is used to render a view and send an HTML response.
+
+res.status(code)
+	Sets the HTTP status code. Express defaults to 200 (OK), so you will have to use this method to return a status of 404 (Not Found) or 500 (Server Error), or any other status code you wish to use. For redirects (status codes 301, 302, 303, and 307), there is a method redirect , which is preferable.
+
+res.set(name, value)
+	Sets a response header. This is not something you will normally be doing manually.
+
+res.cookie(name, value, [options]) , res.clearCookie(name, [options])
+	Sets or clears cookies that will be stored on the client. This requires some middle‐ ware support; see Chapter 9.
+
+res.redirect([status], url)
+	Redirects the browser. The default redirect code is 302 (Found). In general, you should minimize redirection unless you are permanently moving a page, in which case you should use the code 301 (Moved Permanently).
+
+res.send(body) , res.send(status, body)
+	Sends a response to the client, with an optional status code. Express defaults to a content type of text/html , so if you want to change it to text/plain (for example), you’ll have to call res.set('Content-Type', 'text/plain\') before calling res.send . If body is an object or an array, the response is sent as JSON instead (with the content type being set appropriately), though if you want to send JSON, I rec‐ ommend doing so explicitly by calling res.json instead.
+
+res.json(json) , res.json(status, json)
+	Sends JSON to the client with an optional status code.
+
+res.jsonp(json) , res.jsonp(status, json)
+	Sends JSONP to the client with an optional status code.
+
+res.type(type)
+	A convenience method to set the Content-Type header. Essentially equivalent to res.set('Content-Type', type) , except that it will also attempt to map file ex‐ tensions to an Internet media type if you provide a string without a slash in it. For example, res.type('txt') will result in a Content-Type of text/plain . There are areas where this functionality could be useful (for example, automatically serving disparate multimedia files), but in general, you should avoid it in favor of explicitly setting the correct Internet media type.
+
+res.format(object)
+	This method allows you to send different content depending on the Accept request header. This is of primary use in APIs, and we will discuss this more in Chap‐ ter 15. Here’s a very simple example: res.format({'text/plain': 'hi there', 'text/html': '<b>hi there</b>'}) .
+
+res.attachment([filename]) , res.download(path, [filename], [callback])
+	Both of these methods set a response header called Content-Disposition to at tachment ; this will prompt the browser to download the content instead of dis‐ playing it in a browser. You may specify filename as a hint to the browser. With res.download , you can specify the file to download, whereas res.attachment just sets the header; you still have to send content to the client.
+
+res.sendFile(path, [options], [callback])
+	This method will read a file specified by path and send its contents to the client. There should be little need for this method; it’s easier to use the static middleware, and put files you want available to the client in the public directory. However, if you want to have a different resource served from the same URL depending on some condition, this method could come in handy.
+
+res.links(links)
+	Sets the Links response header. This is a specialized header that has little use in most applications.
+
+res.locals , res.render(view, [locals], callback)
+	res.locals is an object containing default context for rendering views. res.ren der will render a view using the configured templating engine (the locals param‐ eter to res.render shouldn’t be confused with res.locals : it will override the context in res.locals , but context not overridden will still be available). Note that
+
+res.render will default to a response code of 200; use res.status to specify a
+	different response code.
