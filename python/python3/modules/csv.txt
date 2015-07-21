@@ -1,0 +1,10 @@
+import csv
+
+with open('example.csv') as csv_file:
+	readCSV = csv.reader( csv_file, delimiter=',' )
+	
+	for row in readCSV:
+		for j in row:
+			print(j, end=" ")
+		
+		print("\n")

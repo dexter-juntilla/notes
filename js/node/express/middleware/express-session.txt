@@ -1,0 +1,29 @@
+The express-session v1.7.6 middleware takes these options:
+ - key: Cookie name, defaulting to connect.sid
+ - store: Session store instance, usually a Redis object (covered in detail in Chapter 12)
+ - secret: Used to sign the session cookie, to prevent tampering; usually just a random string
+ - cookie: Session cookie settings, defaulting to { path: '/', httpOnly: true, maxAge: null }
+ - proxy: Boolean that indicates whether to trust the reverse proxy when setting secure cookies (via "X-Forwarded-Proto")
+ - saveUninitialized: Boolean that forces the saving of a new session (default is true)
+ - unset: Controls if you want to keep the session in the store after unsetting the session with possible values keep and destroy (default is keep)
+ - resave: Boolean that forces the saving of the unmodified session (default is true)
+ - rolling: Boolean that sets a new cookie on each request which resets the expiration (default is false)
+ - genid: A function that generates session ID (default is uid2: https://www.npmjs.org/ package/uid2, https://github.com/coreh/uid2)
+
+
+var app = require('express')();
+var cookieParser = require('cookie-parser');
+var bodyParser = require('body-parser');
+var session = require('express-session');
+
+app.use(bodyParser());
+//app.use(cookieParser());
+app.use(session({secret:'hajhvc'}));
+
+app.post('/', function(req, res, next){
+	var sess = req.session;
+	sess.p = req.body.param;
+	res.end(sess.p+"\n");
+});
+
+app.listen(3000);	

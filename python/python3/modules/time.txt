@@ -1,0 +1,24 @@
+import time
+
+This module provides various functions to manipulate time values.
+
+Variables:
+    
+    timezone -- difference in seconds between UTC and local standard time
+    altzone -- difference in  seconds between UTC and local DST time
+    daylight -- whether local time should reflect DST
+    tzname -- tuple of (standard time zone name, DST time zone name)
+    
+Functions:
+    
+    time() -- return current time in seconds since the Epoch as a float
+    clock() -- return CPU time since process start as a float
+    sleep() -- delay for a number of seconds given as a float
+    gmtime() -- convert seconds since Epoch to UTC tuple
+    localtime() -- convert seconds since Epoch to local time tuple
+    asctime() -- convert time tuple to string
+    ctime() -- convert time in seconds to string
+    mktime() -- convert local time tuple to seconds since Epoch
+    strftime() -- convert time tuple to string according to format specification
+    strptime() -- parse string to time tuple according to format specification
+    tzset() -- change the local timezone

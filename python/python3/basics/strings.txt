@@ -1,0 +1,23 @@
+str = "String"
+
+str.lower()
+
+str.upper()
+
+str.capitalize()
+
+str.isalpha()
+
+str.inalnum()
+
+str.replace(" ", '')
+
+str.sttrip()
+
+str.lstrip()
+
+str.rstrip()
+
+str.split(" ")
+
+str2 = "{} is a {} in {}".format(var1, var2, var3)

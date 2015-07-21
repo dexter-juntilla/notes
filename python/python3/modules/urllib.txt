@@ -1,0 +1,10 @@
+import urllib.request
+
+urllib.request.urlretrieve( url, full_name )
+	# downloads url renamed to full_name
+
+response = urllib.request.urlopen( fileurl )
+	#GET request
+
+content = str( response.read() )
+	# reads file

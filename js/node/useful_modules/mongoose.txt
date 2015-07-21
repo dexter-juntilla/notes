@@ -1,15 +1,30 @@
 var mongoose = require('mongoose');
-var connection = mongoose.createConnection('mongodb://admin:@localhost/test');
-var PersonSchema = mongoose.Schema({
-  Name: String
-});
-var Person = connection.model("Person", PersonSchema);
+mongoose.connect('mongodb://localhost/my_database');
 
-connection.on('open', function(err){
-  var person = new Person({
-    Name:"Dexter"
-  });
-
-  person.save(function(err){});
+var toySchema = new Schema({
+  color: String,
+  name: String
 });
 
+var Toy = mongoose.model('Toy', toySchema);
+
+Toy.schema.path('color').validate(function (value) {
+  return /blue|green|white|red|orange|periwinkle/i.test(value);
+}, 'Invalid color');
+
+var toy = new Toy({ color: 'grease'});
+
+toy.save(function (err) {
+  // err is our ValidationError object
+  // err.errors.color is a ValidatorError object
+  
+  console.log(err.errors.color.message) // prints 'Validator "Invalid color" failed for path color with value `grease`'
+  console.log(String(err.errors.color)) // prints 'Validator "Invalid color" failed for path color with value `grease`'
+  console.log(err.errors.color.type)  // prints "Invalid color"
+  console.log(err.errors.color.path)  // prints "color"
+  console.log(err.errors.color.value) // prints "grease"
+  console.log(err.name) // prints "ValidationError"
+  console.log(err.message) // prints "Validation failed"
+});
+
+if(toy.errors.color.message === err.errors.color.message)

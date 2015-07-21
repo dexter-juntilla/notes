@@ -1,0 +1,37 @@
+var app = require('express')();
+
+app.set(name, value);
+
+env
+	This variable is used to store the current environment mode for this particular Node.js process. The value is automatically set by Express.js from process.env.NODE_ENV (which is fed to Node.js through an environment variable on the executing machine) or, if that is not set, to the development value. The other most common values for env setting are as follows:
+	-	 development
+	-	 test
+	-	 stage
+	-	 preview
+	-	 production
+
+view cache
+	-true //default for production env
+	-false
+
+view engine
+	-jade
+	-ejs
+	-...
+
+views
+	app.set('views', path.join(__dirname, 'app', 'views'));
+
+trust proxy
+	Set trust proxy to true if your Node.js app is working behind reverse proxy such as Varnish or Nginx. This will permit trusting in the X-Forwarded-* headers, such as X-Forwarded-Proto (req.protocol) or X-Forwarder-For (req.ips). The trust proxy setting is disabled by default. If you want to turn it on (when you have a proxy server) you can use one of these statements:
+ 
+	app.set('trust proxy', true);
+
+jsonp callback name
+json replacer and json spaces
+case sensitive routing
+strict routing
+x-powered-by
+etag
+query parser
+subdomain offset

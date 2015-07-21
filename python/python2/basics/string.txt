@@ -1,0 +1,13 @@
+#Methods that use dot notation only work with strings.
+
+raw_input("string") #
+
+"string " * 2 #"string string "
+
+print "Let's not go to %s. 'Tis a silly %s." % (string_1, string_2)
+
+len(str)
+str.lower()
+str.upper()
+str(2) #returns "2"
+str.isalpha()

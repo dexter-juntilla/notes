@@ -1,0 +1,24 @@
+app.use(express.static(__dirname + '/public'));
+
+app.use('/css', express.static(__dirname + '/public/css'));
+app.use('/img', express.static(__dirname + '/public/images'));
+app.use('/js', express.static(__dirname + '/public/javascripts'));
+
+
+The express.static(path, options) v1.5.0 (for Express.js v4.8.1) method takes these options:
+ - maxAge: Number of milliseconds to set for browser cache maxAge, which defaults to 0
+ - redirect: Boolean true or false (default is true) indicating whether to allow a redirect to a trailing slash (/) when the URL pathname is a directory
+ - dotfiles: Indicates how to treat hidden system folders/files (e.g., .gitignore); possible values are ignore (default), allow, and deny
+ - etag: Boolean indicating whether or not to use ETag caching (default is true)
+ - extensions: Boolean indicating whether or not to use the default file extensions (default is false)
+ - index: Identifies the index file; default is index.html; an array, a string and false (disable) are possible values
+ - setHeaders: A function to set custom response headers
+Here’s an example of the express.static() advanced usage with some arbitrary values:
+
+ 
+app.use(express.static(__dirname + '/public', {
+	maxAge: 86400000,
+	redirect: false,
+	hidden: true,
+	'index': ['index.html', 'index.htm']
+}));

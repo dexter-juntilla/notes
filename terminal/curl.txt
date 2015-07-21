@@ -1,0 +1,1 @@
+curl --data "name=Dexter&username=dexter&password=password" http://127.0.0.1:8080/api/users

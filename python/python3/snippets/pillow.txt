@@ -1,0 +1,24 @@
+pip3 install Pillow
+
+from PIL import Image
+
+from PIL import Image
+import inspect
+
+img = Image.open( "manang.jpg" )
+img2 = Image.open( "download.jpg" )
+img3 = Image.open( "other.jpg" )
+
+print(img2.size)
+
+crop_area = ( 100, 100, 200, 200 )
+
+cropped_image = img.crop( crop_area )
+
+img_area = ( 0, 0, 202, 250 )
+
+img.paste( img2, img_area )
+
+r, g, b = img.split()
+
+new_image = Image.merge( "RGB", ( r, g, b ))

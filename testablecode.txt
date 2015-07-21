@@ -1,8 +1,0 @@
-#use dependency injection
-	avoid littering your classes with the new operator
-
-#limit your constructors to dependency assignment
-
-#Single responsibility principle
-
-#

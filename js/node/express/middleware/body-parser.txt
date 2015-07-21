@@ -1,0 +1,29 @@
+The body-parser module has the following distinct middleware:
+ - json(): Processes JSON data; e.g., {"name": "value", "name2": "value"}
+ - urlencoded(): Processes URL-encoded data; e.g., name=value&name2=value2
+ - raw(): Returns body as a buffer type
+ - text(): Returns body as string type
+
+ If the request has a MIME type of application/json, the json() middleware will try to parse the request payload as JSON. The result will be put in the req.body object and passed to the next middleware and routes.
+We can pass the following options as properties:
+
+ - strict: Boolean true or false; if it’s true (default), then a 400 status error (Bad Request) will be passed to the next() callback when the first character is not [ or {.
+ - reviver: A second parameter to the JSON.parse() function that transforms the output; more info is available at MDN. 1
+ - limit: Maximum byte size; disabled by default.
+ - inflate: Inflates the deflated body; default is true.
+ - type: Content-Type to parse; default is json.
+ - verify: A function to verify the body.
+
+var express = require('express');
+var bodyParser = require('body-parser');
+var app = express();
+
+app.use(bodyParser());
+//app.use(bodyParser.urlencoded({ extended: true }));
+//app.use(bodyParser.json());
+
+app.post('/', function(req, res, next){
+	res.end(req.body.param);
+});
+
+app.listen(3000);	

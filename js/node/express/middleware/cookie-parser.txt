@@ -1,0 +1,15 @@
+the cookieParser() takes these options as a second parameter:
+ - secret: token
+ - path: A cookie path
+ - expires: Absolute expiration date for the cookie
+ - maxAge: Relative maximum age of the cookie
+ - domain: The web site domain for the cookie
+ - secure: Boolean indicating whether the cookie is secure or not
+ - httpOnly: Boolean indicating whether HTTP only or not
+
+cookie-parser has some additional methods:
+ - JSONCookie(string): Parse string into a JSON data format
+ - JSONCookies(cookies): Same as JSONCookie(string) but for objects
+ - signedCookie(string, secret): Parse a cookie value as a signed cookie
+ - signedCookies(cookies, secret): Same as signedCookie(string, secret) but for objects
+

@@ -1,0 +1,9 @@
+os.getcwd()
+
+os.remove("sample.txt") # deletes the file
+
+os.rmdir('dir')
+
+os.mkdir('new dir')
+
+os.rename('old', 'new')

@@ -1,0 +1,15 @@
+Complies with the Express view system
+Static caching of intermediate JavaScript
+Unbuffered code for conditionals etc <% code %>
+Escapes html by default with <%= code %>
+Unescaped buffering with <%- code %>
+Supports tag customization
+Filter support for designer-friendly templates
+Includes
+Client-side support
+Newline slurping with <% code -%> or <% -%> or <%= code -%> or <%- code -%>
+
+
+<% if (user) { %>
+    <h2><%= user.name %></h2>
+<% } %>

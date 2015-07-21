@@ -1,0 +1,4 @@
+import random
+
+random.randrange(0, 100) #0-99
+

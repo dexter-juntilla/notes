@@ -1,0 +1,16 @@
+list = []
+
+list.append("item")
+
+list.insert(1, "new item")
+
+list.remove("item")
+
+list.sort()
+
+list.reverse()
+
+del list[0]
+
+new_list = list1 + list2
+

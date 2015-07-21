@@ -1,0 +1,35 @@
+Supported options to pass to the morgan function (logger() in the previous example) are as follows:
+ - format: A string with an output format; see the upcoming list of token string and predefined formats.
+ - stream: The output stream to use defaults to stdout, but could be anything else, such as a file or another stream.
+ - buffer: The number of milliseconds for the buffer interval; defaults to 1000ms if not set or not a number.
+ - immediate: Boolean value that, when set to true, makes the logger (morgan) write log lines on request instead of response.
+
+The following are the available format string parameters or tokens:
+ - :req[header] (e.g., :req[Accept])
+ - :res[header] (e.g., :res[Content-Length])
+ - :http-version
+ - :response-time
+ - :remote-addr
+ - :date
+ - :method
+ - :url
+ - :referrer
+ - :user-agent
+ - :status
+
+The following are the predefined formats/tokens that come with Morgan:
+ - combined: Same as :remote-addr - :remote-user [:date] ":method :url
+HTTP/:http-version" :status :res[content-length] ":referrer" ":user-agent"
+ - common: Same as :remote-addr - :remote-user [:date] ":method :url
+HTTP/:http-version" :status :res[content-length]
+ - short: Same as :remote-addr :remote-user :method :url
+HTTP/:http-version :status :res[content-length] - :response-time ms
+ - tiny: Same as :method :url :status :res[content-length] - :response-time ms
+ - dev: Short and colored development output with response statuses, same as :method
+:url :status :response-time ms - :res[content-length]
+
+
+
+var logger = require('morgan');
+
+app.use(logger(':method :url :status :res[content-length] - :response-time ms'));

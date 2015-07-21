@@ -1,0 +1,7 @@
+
+
+
+var compressible = require('compressible');
+
+compressible('text/html'); // => true
+compressible('image/png'); // => false

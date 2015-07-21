@@ -1,0 +1,21 @@
+class Animal( object ):
+	__name = None #private attribute
+
+	def __init__( self, name ):
+		self.__name = name
+
+	def get_name( self ):
+		return self.__name
+
+	
+
+class Dog( Animal ):
+	__owner = ""
+
+
+	def __init__( self, name, owner ):
+		self.__owner = owner
+		super(Dog, self).__init__( name )
+
+	def get_owner(self):
+		return self.__owner

@@ -1,0 +1,7 @@
+import re
+
+string = "asasd 55 a4d 8"
+
+num = re.findall(r'\d+\b', string)
+
+print(num)
